@@ -43,7 +43,7 @@
         }
     </script>
     <style>
-        /* Light Mode (iOS Glass) */
+        
         body {
             background: linear-gradient(135deg, 
                 #667eea 0%, 
@@ -57,7 +57,7 @@
             transition: background 0.5s ease;
         }
         
-        /* Dark Mode */
+        
         body.dark-mode {
             background: linear-gradient(135deg, 
                 #0f0f23 0%, 
@@ -159,7 +159,7 @@
     </style>
 </head>
 <body class="text-text-primary font-sans floating-particles">
-    <!-- Navigation -->
+    
     <nav class="glass sticky top-0 z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -198,7 +198,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile menu -->
+        
         <div id="mobileMenu" class="md:hidden hidden">
             <div class="px-4 pt-4 pb-6 space-y-3 glass-strong m-4 rounded-2xl">
                 <a href="#home" class="block text-text-secondary hover:text-white hover:bg-glass-white px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🏠 Home</a>
@@ -209,7 +209,7 @@
         </div>
     </nav>
 
-    <!-- Banner Section -->
+    
     <section id="home" class="relative h-96 sm:h-[600px] overflow-hidden">
         <div id="bannerContainer" class="relative w-full h-full">
             <div class="banner-slide absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-700">
@@ -264,7 +264,7 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    
     <section id="products" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -274,21 +274,21 @@
                 </div>
             </div>
             
-            <!-- Filter Buttons -->
+            
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button data-filter="all" class="filter-btn glass-button text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 hover:scale-105">🌟 All</button>
                 <button data-filter="Coffee" class="filter-btn glass text-white border border-glass-border px-8 py-3 rounded-2xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-105">☕ Coffee</button>
                 <button data-filter="Tea" class="filter-btn glass text-white border border-glass-border px-8 py-3 rounded-2xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-105">🍃 Tea</button>
             </div>
 
-            <!-- Products Grid -->
+            
             <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Products will be dynamically inserted here -->
+                
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section -->
+    
     <section id="reviews" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -298,12 +298,12 @@
                 </div>
             </div>
             <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Reviews will be dynamically loaded here -->
+               
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+   
     <section id="contact" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -367,7 +367,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+   
     <footer class="glass-strong mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -408,7 +408,7 @@
         </div>
     </footer>
 
-    <!-- Cart Sidebar -->
+    
     <div id="cartSidebar" class="fixed right-0 top-0 w-96 h-full glass-strong border-l border-glass-border z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto shadow-2xl">
         <div class="p-6 border-b border-glass-border flex justify-between items-center">
             <h3 class="text-2xl font-bold text-white flex items-center">
@@ -417,7 +417,7 @@
             <button id="closeCartBtn" class="glass text-white text-2xl hover:bg-glass-white transition-colors duration-300 p-2 rounded-xl">&times;</button>
         </div>
         <div id="cartItems" class="p-4">
-            <!-- Cart items will be dynamically inserted here -->
+            
         </div>
         <div class="border-t border-glass-border p-4">
             <div class="mb-4">
@@ -439,12 +439,13 @@
         </div>
     </div>
 
-    <!-- Back to Top Button -->
+    
     <button id="backToTop" class="fixed bottom-6 right-6 glass-button text-white p-4 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none hover:scale-110">
         <span class="text-xl">⬆️</span>
     </button>
 
-    <!-- External JavaScript -->
+    
     <script src="app.js"></script>
 </body>
+
 </html>
