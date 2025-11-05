@@ -15,7 +15,7 @@ const products = [
     { id: 5, name: "Brazilian Santos", price: 915.99, rating: 4.5, category: "Coffee", image: "/public/brazilian-coffee.jpg", description: "Nutty and smooth with caramel notes" },
     { id: 6, name: "Chamomile Blend", price: 912.99, rating: 4.4, category: "Tea", image: "/public/chamomile-tea-flowers.jpg", description: "Calming herbal tea with honey-like sweetness" },
     { id: 7, name: "French Roast", price: 917.99, rating: 4.6, category: "Coffee", image: "/public/french-roast-coffee.jpg", description: "Bold and intense dark roast with smoky finish" },
-    { id: 8, name: "Earl Grey Premium", price: 14.99, rating: 4.5, category: "Tea", image: "/public/assam-black-tea.jpg", description: "Classic bergamot blend with citrus aroma" }
+    { id: 8, name: "Earl Grey Premium", price: 914.99, rating: 4.5, category: "Tea", image: "/public/assam-black-tea.jpg", description: "Classic bergamot blend with citrus aroma" }
 ];
 
 
@@ -520,4 +520,5 @@ setInterval(nextBanner, 5000);
 
 
 document.addEventListener('DOMContentLoaded', init);
+
 
