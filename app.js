@@ -1,5 +1,4 @@
-// BrewCafe - JavaScript Application
-// Global Variables
+
 let currentBannerIndex = 0;
 let cart = [];
 let userBalance = 1000;
@@ -7,7 +6,7 @@ let appliedCoupon = null;
 let isDarkMode = false;
 let reviews = [];
 
-// Products Data
+
 const products = [
     { id: 1, name: "Ethiopian Yirgacheffe", price: 918.99, rating: 4.8, category: "Coffee", image: "/public/ethiopian-coffee-beans.jpg", description: "Floral and fruity notes with hints of lemon and wine" },
     { id: 2, name: "Colombian Supreme", price: 916.99, rating: 4.7, category: "Coffee", image: "/public/colombian-coffee.jpg", description: "Rich and balanced flavor with chocolate undertones" },
@@ -19,14 +18,14 @@ const products = [
     { id: 8, name: "Earl Grey Premium", price: 14.99, rating: 4.5, category: "Tea", image: "/public/assam-black-tea.jpg", description: "Classic bergamot blend with citrus aroma" }
 ];
 
-// Coupons
+
 const coupons = {
     'SAVE10': { discount: 10, type: 'percentage' },
     'BREW50': { discount: 50, type: 'fixed' },
     'NEWUSER': { discount: 15, type: 'percentage' }
 };
 
-// Initialize the application
+
 async function init() {
     loadFromLocalStorage();
     loadTheme();
@@ -38,7 +37,7 @@ async function init() {
     updateBalance();
 }
 
-// Banner functionality
+
 function nextBanner() {
     const slides = document.querySelectorAll('.banner-slide');
     slides[currentBannerIndex].classList.remove('opacity-100');
@@ -57,7 +56,7 @@ function prevBanner() {
     slides[currentBannerIndex].classList.add('opacity-100');
 }
 
-// Product functionality
+
 function renderProducts(filter = 'all') {
     const grid = document.getElementById('productsGrid');
     const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
@@ -91,7 +90,7 @@ function renderProducts(filter = 'all') {
         </div>
     `).join('');
     
-    // Add event listeners to all add to cart buttons
+    
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const productId = parseInt(this.getAttribute('data-product-id'));
@@ -103,7 +102,7 @@ function renderProducts(filter = 'all') {
 function filterProducts(category, activeBtn) {
     renderProducts(category);
     
-    // Update filter button styles
+    
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.className = 'filter-btn glass text-white border border-glass-border px-8 py-3 rounded-2xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-105';
     });
@@ -113,7 +112,7 @@ function filterProducts(category, activeBtn) {
     }
 }
 
-// Cart functionality
+
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
@@ -261,7 +260,7 @@ function checkout() {
     saveToLocalStorage();
 }
 
-// Utility functions
+
 function toggleCart() {
     const sidebar = document.getElementById('cartSidebar');
     sidebar.classList.toggle('translate-x-full');
@@ -296,7 +295,7 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Theme Functions
+
 function toggleTheme() {
     isDarkMode = !isDarkMode;
     document.body.classList.toggle('dark-mode', isDarkMode);
@@ -315,14 +314,14 @@ function loadTheme() {
     }
 }
 
-// Reviews Functions
+
 async function loadReviews() {
     try {
         const response = await fetch('reviews.json');
         if (response.ok) {
             reviews = await response.json();
         } else {
-            // Fallback reviews if file doesn't load
+            
             reviews = [
                 { id: 1, name: "Ahmed Rahman", rating: 5, comment: "The Ethiopian Yirgacheffe is absolutely amazing! Best coffee I've ever tasted.", avatar: "👨" },
                 { id: 2, name: "Sarah Khan", rating: 5, comment: "Love the matcha quality! Fast delivery and excellent packaging.", avatar: "👩" },
@@ -331,7 +330,7 @@ async function loadReviews() {
         }
     } catch (error) {
         console.error('Error loading reviews:', error);
-        // Fallback reviews
+        
         reviews = [
             { id: 1, name: "Ahmed Rahman", rating: 5, comment: "The Ethiopian Yirgacheffe is absolutely amazing! Best coffee I've ever tasted.", avatar: "👨" },
             { id: 2, name: "Sarah Khan", rating: 5, comment: "Love the matcha quality! Fast delivery and excellent packaging.", avatar: "👩" },
@@ -380,13 +379,13 @@ function showNotification(message) {
     notification.className = 'fixed top-4 right-4 glass-strong text-white px-6 py-4 rounded-2xl z-50 border border-glass-border shadow-2xl transform translate-x-full opacity-0 transition-all duration-300';
     document.body.appendChild(notification);
     
-    // Animate in
+    
     setTimeout(() => {
         notification.classList.remove('translate-x-full', 'opacity-0');
         notification.classList.add('translate-x-0', 'opacity-100');
     }, 10);
     
-    // Animate out and remove
+    
     setTimeout(() => {
         notification.classList.add('translate-x-full', 'opacity-0');
         setTimeout(() => notification.remove(), 300);
@@ -399,9 +398,9 @@ function handleContactSubmit(event) {
     event.target.reset();
 }
 
-// Event listeners
+
 function setupEventListeners() {
-    // Filter buttons
+    
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const category = this.getAttribute('data-filter');
@@ -409,13 +408,13 @@ function setupEventListeners() {
         });
     });
 
-    // Theme toggle button
+    
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', toggleTheme);
     }
 
-    // Add money button
+    
     const addMoneyBtn = document.getElementById('addMoneyBtn');
     if (addMoneyBtn) {
         addMoneyBtn.addEventListener('click', addMoney);
@@ -516,8 +515,9 @@ function loadFromLocalStorage() {
     if (savedCoupon) appliedCoupon = savedCoupon || null;
 }
 
-// Auto-rotate banner
+
 setInterval(nextBanner, 5000);
 
-// Initialize app when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', init);
+
