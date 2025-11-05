@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrewCafe - Premium Tea & Coffee Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgba(255, 255, 255, 0.03)',
+                        secondary: 'rgba(255, 255, 255, 0.08)',
+                        accent: '#007AFF',
+                        'accent-light': '#5AC8FA',
+                        'accent-dark': '#0051D5',
+                        'glass-white': 'rgba(255, 255, 255, 0.1)',
+                        'glass-white-strong': 'rgba(255, 255, 255, 0.2)',
+                        'text-primary': '#FFFFFF',
+                        'text-secondary': 'rgba(255, 255, 255, 0.6)',
+                        'glass-border': 'rgba(255, 255, 255, 0.18)',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(0, 122, 255, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(0, 122, 255, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Light Mode (iOS Glass) */
+        body {
+            background: linear-gradient(135deg, 
+                #667eea 0%, 
+                #764ba2 25%, 
+                #f093fb 50%, 
+                #f5576c 75%, 
+                #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+        
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(135deg, 
+                #0f0f23 0%, 
+                #1a1a2e 25%, 
+                #16213e 50%, 
+                #0f3460 75%, 
+                #1a1a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        body.dark-mode .text-white {
+            color: #e0e0e0 !important;
+        }
+        
+        body.dark-mode .text-text-secondary {
+            color: rgba(200, 200, 200, 0.7) !important;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        body.dark-mode .glass {
+            background: rgba(30, 30, 50, 0.6);
+            border: 1px solid rgba(100, 100, 150, 0.3);
+        }
+        
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        body.dark-mode .glass-strong {
+            background: rgba(30, 30, 50, 0.8);
+            border: 1px solid rgba(100, 100, 150, 0.4);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .glass-card {
+            background: rgba(30, 30, 50, 0.7);
+            border: 1px solid rgba(100, 100, 150, 0.35);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .glass-button {
+            background: rgba(0, 122, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-button:hover {
+            background: rgba(0, 122, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
+        ::-webkit-scrollbar-thumb { 
+            background: rgba(0, 122, 255, 0.6); 
+            border-radius: 10px; 
+            backdrop-filter: blur(10px);
+        }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 122, 255, 0.8); }
+        
+        .floating-particles::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.3) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-text-primary font-sans floating-particles">
+    <!-- Navigation -->
+    <nav class="glass sticky top-0 z-50 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">☕</span>
+                        </div>
+                        <h1 class="text-2xl font-bold text-white bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">BrewCafe</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <a href="#home" class="text-text-secondary hover:text-white hover:bg-glass-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm">Home</a>
+                        <a href="#products" class="text-text-secondary hover:text-white hover:bg-glass-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm">Products</a>
+                        <a href="#reviews" class="text-text-secondary hover:text-white hover:bg-glass-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm">Reviews</a>
+                        <a href="#contact" class="text-text-secondary hover:text-white hover:bg-glass-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggleBtn" class="glass text-white p-2 rounded-xl transition-all duration-300 hover:scale-105 hover:bg-glass-white">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="glass px-4 py-2 rounded-xl flex items-center gap-2">
+                        <span class="text-white font-semibold">💰 <span id="userBalance">1000</span> BDT</span>
+                        <button id="addMoneyBtn" class="glass-button text-white px-3 py-1 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105">+</button>
+                    </div>
+                    <button id="cartToggleBtn" class="glass-button text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105">
+                        🛒 Cart (<span id="cartCount">0</span>)
+                    </button>
+                    <button id="menuToggleBtn" class="md:hidden text-white focus:outline-none glass p-2 rounded-xl">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden">
+            <div class="px-4 pt-4 pb-6 space-y-3 glass-strong m-4 rounded-2xl">
+                <a href="#home" class="block text-text-secondary hover:text-white hover:bg-glass-white px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🏠 Home</a>
+                <a href="#products" class="block text-text-secondary hover:text-white hover:bg-glass-white px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">🛍️ Products</a>
+                <a href="#reviews" class="block text-text-secondary hover:text-white hover:bg-glass-white px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">⭐ Reviews</a>
+                <a href="#contact" class="block text-text-secondary hover:text-white hover:bg-glass-white px-4 py-3 rounded-xl text-base font-medium transition-all duration-300">📞 Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section id="home" class="relative h-96 sm:h-[600px] overflow-hidden">
+        <div id="bannerContainer" class="relative w-full h-full">
+            <div class="banner-slide absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-700">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div class="relative z-10 text-center px-4">
+                    <div class="glass-strong rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <span class="text-6xl sm:text-8xl animate-float">☕</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Premium Coffee & Tea</h1>
+                        <p class="text-lg sm:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">Discover the finest selections from around the world, crafted with passion and precision</p>
+                        <button onclick="scrollToProducts()" class="glass-button text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-105 animate-glow">
+                            ✨ Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-slide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-700">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div class="relative z-10 text-center px-4">
+                    <div class="glass-strong rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <span class="text-6xl sm:text-8xl animate-float">🎨</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Artisan Roasted</h1>
+                        <p class="text-lg sm:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">Experience the perfect blend crafted by master roasters with decades of expertise</p>
+                        <button onclick="scrollToProducts()" class="glass-button text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-105 animate-glow">
+                            🌟 Explore Collection
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-slide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-700">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div class="relative z-10 text-center px-4">
+                    <div class="glass-strong rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <span class="text-6xl sm:text-8xl animate-float">🌱</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">Fresh & Organic</h1>
+                        <p class="text-lg sm:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">Sustainably sourced from the best farms around the globe, ensuring quality and ethics</p>
+                        <button onclick="scrollToProducts()" class="glass-button text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-105 animate-glow">
+                            🍃 Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
+            <button id="prevBannerBtn" class="glass text-white px-4 py-2 rounded-xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-110">❮</button>
+            <button id="nextBannerBtn" class="glass text-white px-4 py-2 rounded-xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-110">❯</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="glass-strong rounded-3xl p-8 max-w-2xl mx-auto">
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Our Premium Selection</h2>
+                    <p class="text-lg text-text-secondary">Choose from our carefully curated collection of the world's finest beverages</p>
+                </div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button data-filter="all" class="filter-btn glass-button text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 hover:scale-105">🌟 All</button>
+                <button data-filter="Coffee" class="filter-btn glass text-white border border-glass-border px-8 py-3 rounded-2xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-105">☕ Coffee</button>
+                <button data-filter="Tea" class="filter-btn glass text-white border border-glass-border px-8 py-3 rounded-2xl font-semibold hover:bg-glass-white transition-all duration-300 hover:scale-105">🍃 Tea</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="glass-strong rounded-3xl p-8 max-w-2xl mx-auto">
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-yellow-200 bg-clip-text text-transparent">What Our Customers Say</h2>
+                    <p class="text-lg text-text-secondary">Real reviews from coffee and tea lovers around the world</p>
+                </div>
+            </div>
+            <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Reviews will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="glass-strong rounded-3xl p-8 max-w-2xl mx-auto">
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Get in Touch</h2>
+                    <p class="text-lg text-text-secondary">We'd love to hear from you and answer any questions</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+                        <span class="mr-3">📞</span> Contact Information
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 glass rounded-xl hover:bg-glass-white transition-all duration-300">
+                            <span class="text-3xl mr-4">📍</span>
+                            <div>
+                                <p class="text-white font-semibold">Address</p>
+                                <p class="text-text-secondary">123 Coffee Street, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 glass rounded-xl hover:bg-glass-white transition-all duration-300">
+                            <span class="text-3xl mr-4">�</span>
+                            <div>
+                                <p class="text-white font-semibold">Phone</p>
+                                <p class="text-text-secondary">+880 123 456 789</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 glass rounded-xl hover:bg-glass-white transition-all duration-300">
+                            <span class="text-3xl mr-4">✉️</span>
+                            <div>
+                                <p class="text-white font-semibold">Email</p>
+                                <p class="text-text-secondary">info@brewcafe.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+                        <span class="mr-3">💬</span> Send us a Message
+                    </h3>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-white font-semibold mb-3">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 glass border border-glass-border rounded-xl text-white placeholder-text-secondary focus:border-accent focus:outline-none transition-all duration-300" placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-white font-semibold mb-3">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 glass border border-glass-border rounded-xl text-white placeholder-text-secondary focus:border-accent focus:outline-none transition-all duration-300" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-white font-semibold mb-3">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 glass border border-glass-border rounded-xl text-white placeholder-text-secondary focus:border-accent focus:outline-none resize-none transition-all duration-300" placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full glass-button text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            🚀 Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-strong mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center shadow-lg mr-4">
+                            <span class="text-white font-bold text-lg">☕</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">BrewCafe</h3>
+                    </div>
+                    <p class="text-text-secondary leading-relaxed">Your premium destination for the finest coffee and tea from around the world. Quality, passion, and excellence in every cup.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <span class="mr-2">🔗</span> Quick Links
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">🏠</span> Home</a></li>
+                        <li><a href="#products" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">🛍️</span> Products</a></li>
+                        <li><a href="#reviews" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">⭐</span> Reviews</a></li>
+                        <li><a href="#contact" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">📞</span> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <span class="mr-2">🌐</span> Follow Us
+                    </h4>
+                    <div class="space-y-3">
+                        <a href="#" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">📘</span> Facebook</a>
+                        <a href="#" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">🐦</span> Twitter</a>
+                        <a href="#" class="text-text-secondary hover:text-white transition-colors duration-300 flex items-center"><span class="mr-2">📸</span> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-glass-border mt-12 pt-8 text-center">
+                <p class="text-text-secondary">© 2024 BrewCafe. All rights reserved. Made with ❤️ and lots of ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 w-96 h-full glass-strong border-l border-glass-border z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto shadow-2xl">
+        <div class="p-6 border-b border-glass-border flex justify-between items-center">
+            <h3 class="text-2xl font-bold text-white flex items-center">
+                <span class="mr-2">🛒</span> Shopping Cart
+            </h3>
+            <button id="closeCartBtn" class="glass text-white text-2xl hover:bg-glass-white transition-colors duration-300 p-2 rounded-xl">&times;</button>
+        </div>
+        <div id="cartItems" class="p-4">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div class="border-t border-glass-border p-4">
+            <div class="mb-4">
+                <label for="couponCode" class="block text-white font-semibold mb-3 flex items-center">
+                    <span class="mr-2">🎫</span> Coupon Code
+                </label>
+                <div class="flex">
+                    <input type="text" id="couponCode" placeholder="Enter coupon code" class="flex-1 px-4 py-3 glass border border-glass-border rounded-l-xl text-white placeholder-text-secondary focus:border-accent focus:outline-none">
+                    <button id="applyCouponBtn" class="glass-button text-white px-6 py-3 rounded-r-xl font-semibold transition-all duration-300 hover:scale-105">Apply</button>
+                </div>
+            </div>
+            <div class="text-xl font-bold text-white mb-6 glass p-4 rounded-xl flex items-center justify-between">
+                <span class="flex items-center">💰 Total:</span>
+                <span id="total" class="text-accent-light">0</span> BDT
+            </div>
+            <button id="checkoutBtn" class="w-full glass-button text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                ✨ Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 glass-button text-white p-4 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none hover:scale-110">
+        <span class="text-xl">⬆️</span>
+    </button>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

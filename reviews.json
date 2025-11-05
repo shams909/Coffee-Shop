@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Ashraful Islam",
+        "rating": 5,
+        "comment": "As CR i gave fake review instead of some money. Best coffee I've ever had! The Ethiopian blend is absolutely amazing. Fast delivery and excellent packaging.",
+        "date": "2024-10-15",
+        "avatar": "👩"
+    },
+    {
+        "id": 2,
+        "name": "Dipta Dhar",
+        "rating": 5,
+        "comment": "The green tea selection is outstanding. I've tried three different varieties and loved them all. Highly recommend!",
+        "date": "2024-10-12",
+        "avatar": "👨"
+    },
+    {
+        "id": 3,
+        "name": "Zayed Bin Ruhi",
+        "rating": 4,
+        "comment": "Great quality products and reasonable prices. The only reason I'm not giving 5 stars is shipping took a bit longer than expected.",
+        "date": "2024-10-08",
+        "avatar": "👩‍🦰"
+    },
+    {
+        "id": 4,
+        "name": "Maruf Islam Nourin",
+        "rating": 5,
+        "comment": "Absolutely love the Colombian coffee! Rich flavor and perfect roast. Customer service was also very helpful.",
+        "date": "2024-10-05",
+        "avatar": "👨‍🦱"
+    },
+    {
+        "id": 5,
+        "name": "Kaled Saifulla Tahamid",
+        "rating": 5,
+        "comment": "The matcha is authentic and high quality. You can really taste the difference compared to supermarket brands.",
+        "date": "2024-10-01",
+        "avatar": "👩‍🦳"
+    },
+    {
+        "id": 6,
+        "name": "Raktim Chowdhury chaiti",
+        "rating": 4,
+        "comment": "Good variety of products. The website is easy to navigate and checkout was smooth. Will order again!",
+        "date": "2024-09-28",
+        "avatar": "👨‍💼"
+    }
+]
