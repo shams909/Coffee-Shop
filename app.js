@@ -8,14 +8,14 @@ let reviews = [];
 
 
 const products = [
-    { id: 1, name: "Ethiopian Yirgacheffe", price: 918.99, rating: 4.8, category: "Coffee", image: "/public/ethiopian-coffee-beans.jpg", description: "Floral and fruity notes with hints of lemon and wine" },
-    { id: 2, name: "Colombian Supreme", price: 916.99, rating: 4.7, category: "Coffee", image: "/public/colombian-coffee.jpg", description: "Rich and balanced flavor with chocolate undertones" },
-    { id: 3, name: "Green Tea Matcha", price: 924.99, rating: 4.9, category: "Tea", image: "/public/matcha-green-tea.jpg", description: "Pure organic matcha powder from Japan" },
-    { id: 4, name: "Oolong Dragon", price: 920.99, rating: 4.6, category: "Tea", image: "/public/oolong-tea-leaves.jpg", description: "Premium aged oolong with complex flavor profile" },
-    { id: 5, name: "Brazilian Santos", price: 915.99, rating: 4.5, category: "Coffee", image: "/public/brazilian-coffee.jpg", description: "Nutty and smooth with caramel notes" },
-    { id: 6, name: "Chamomile Blend", price: 912.99, rating: 4.4, category: "Tea", image: "/public/chamomile-tea-flowers.jpg", description: "Calming herbal tea with honey-like sweetness" },
-    { id: 7, name: "French Roast", price: 917.99, rating: 4.6, category: "Coffee", image: "/public/french-roast-coffee.jpg", description: "Bold and intense dark roast with smoky finish" },
-    { id: 8, name: "Earl Grey Premium", price: 914.99, rating: 4.5, category: "Tea", image: "/public/assam-black-tea.jpg", description: "Classic bergamot blend with citrus aroma" }
+    { id: 1, name: "Ethiopian Yirgacheffe", price: 918.99, rating: 4.8, category: "Coffee", image: "ethiopian-coffee-beans.jpg", description: "Floral and fruity notes with hints of lemon and wine" },
+    { id: 2, name: "Colombian Supreme", price: 916.99, rating: 4.7, category: "Coffee", image: "colombian-coffee.jpg", description: "Rich and balanced flavor with chocolate undertones" },
+    { id: 3, name: "Green Tea Matcha", price: 924.99, rating: 4.9, category: "Tea", image: "matcha-green-tea.jpg", description: "Pure organic matcha powder from Japan" },
+    { id: 4, name: "Oolong Dragon", price: 920.99, rating: 4.6, category: "Tea", image: "oolong-tea-leaves.jpg", description: "Premium aged oolong with complex flavor profile" },
+    { id: 5, name: "Brazilian Santos", price: 915.99, rating: 4.5, category: "Coffee", image: "brazilian-coffee.jpg", description: "Nutty and smooth with caramel notes" },
+    { id: 6, name: "Chamomile Blend", price: 912.99, rating: 4.4, category: "Tea", image: "chamomile-tea-flowers.jpg", description: "Calming herbal tea with honey-like sweetness" },
+    { id: 7, name: "French Roast", price: 917.99, rating: 4.6, category: "Coffee", image: "french-roast-coffee.jpg", description: "Bold and intense dark roast with smoky finish" },
+    { id: 8, name: "Earl Grey Premium", price: 914.99, rating: 4.5, category: "Tea", image: "assam-black-tea.jpg", description: "Classic bergamot blend with citrus aroma" }
 ];
 
 
@@ -520,5 +520,6 @@ setInterval(nextBanner, 5000);
 
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
